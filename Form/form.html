@@ -5,457 +5,397 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mind Tunes Test Form</title>
     <link rel="stylesheet" href="form.css">
-</head> 
+</head>
 <body>
-
     <div class="video-background">
         <video autoplay muted loop>
-          <source src="vid\form.mp4" type="video/mp4">
+            <source src="vid\form.mp4" type="video/mp4">
         </video>
         <div class="video-overlay"></div>
-      </div>
+    </div>
     <div class="container">
         <h1 class="main-heading">Content Consumption on Social Media and Real-Life Performance</h1>
         <h3 class="sub-heading">Questionnaire</h3>
-        <form action="#" method="post">
-            
-            <!-- Section 1 -->
-            <h3>Section 1: Social Media Usage</h3>
-            <label>1. On an average, how many hours per day do you spend on social media?</label>
-            <select name="hours_per_day">
-                <option>Less than 1 hour</option>
-                <option>1–2 hours</option>
-                <option>2–4 hours</option>
-                <option>4–6 hours</option>
-                <option>More than 6 hours</option>
-            </select>
-            
+
+        <form id="predictForm" method="post">
+            <!-- Section 0: Demographics (From Previous Form) -->
+            <h3>Section 0: Demographics and Background Information</h3>
+            <label>1. Age *</label>
+            <input type="text" id="feature1" name="age" required>
             <div class="section-divider"></div>
 
-            <label>2. Which types of content do you primarily consume on social media? (Select all that apply)</label>
-            <label>News and current events
-                <input type="checkbox" name="content" value="News">
-            </label>
-            <label>Entertainment
-                <input type="checkbox" name="content" value="Entertainment">
-            </label>
-            <label>Lifestyle
-                <input type="checkbox" name="content" value="Lifestyle">
-            </label>
-            <label>Educational content
-                <input type="checkbox" name="content" value="Educational">
-            </label>
-            <label>Social interactions
-                <input type="checkbox" name="content" value="Social">
-            </label>
-            <label>Learning Spirituality
-                <input type="checkbox" name="content" value="Spirituality">
-            </label>
-            <label>Other:
-                <input type="text" name="content_other" placeholder="Specify here">
-            </label>
-            
-            <div class="section-divider"></div>            
+            <label>2. Gender *</label>
+            <label>Male <input type="radio" name="gender" value="1" id="feature2_male" required></label>
+            <label>Female <input type="radio" name="gender" value="0" id="feature2_female"></label>
+            <label>Other <input type="radio" name="gender" value="2" id="feature2_other"></label>
+            <div class="section-divider"></div>
+
+            <label>3. Education Level *</label>
+            <select id="feature3" name="education" required>
+                <option value="3">Middle School</option>
+                <option value="1">High School</option>
+                <option value="0">Graduate</option>
+                <option value="4">Post Graduate</option>
+                <option value="2">Higher Education (Ph.D etc)</option>
+                <option value="2">Under Graduate</option>
+            </select>
+            <div class="section-divider"></div>
+
+            <!-- Section 1: Social Media Usage -->
+            <h3>Section 1: Social Media Usage</h3>
+            <label>1. On an average, how many hours per day do you spend on social media?</label>
+            <select id="feature4" name="hours_per_day">
+                <option value="0.5">Less than 1 hour</option>
+                <option value="1.5">1–2 hours</option>
+                <option value="3">2–4 hours</option>
+                <option value="5">4–6 hours</option>
+                <option value="7">More than 6 hours</option>
+            </select>
+            <div class="section-divider"></div>
+
+            <label>2. Which types of content do you primarily consume on social media?</label>
+            <label>News <input type="checkbox" id="feature5_news" name="content" value="1"></label>
+            <label>Entertainment <input type="checkbox" id="feature5_entertainment" name="content" value="1"></label>
+            <label>Lifestyle <input type="checkbox" id="feature5_lifestyle" name="content" value="1"></label>
+            <label>Educational <input type="checkbox" id="feature5_educational" name="content" value="1"></label>
+            <label>Social <input type="checkbox" id="feature5_social" name="content" value="1"></label>
+            <label>Spirituality <input type="checkbox" id="feature5_spirituality" name="content" value="1"></label>
+            <div class="section-divider"></div>
 
             <label>3. Which Social Media do you like to use?</label>
-            <label>WhatsApp
-                <input type="checkbox" name="platform" value="WhatsApp">
-            </label>
-            <label>Facebook
-                <input type="checkbox" name="platform" value="Facebook">
-            </label>
-            <label>Instagram
-                <input type="checkbox" name="platform" value="Instagram">
-            </label>
-
-            <label>Web Search
-                <input type="checkbox" name="platform" value="LinkedIn">
-            </label>
-            <label>Online Purchasing
-                <input type="checkbox" name="platform" value="Twitter">
-            </label>
-            <label>YouTube
-                <input type="checkbox" name="platform" value="YouTube">
-            </label>
-            <label>Twitter
-                <input type="checkbox" name="platform" value="Twitter">
-            </label>
-            <label>Other:
-                <input type="text" name="platform_other" placeholder="Specify here">
-            </label>
-            
+            <label>WhatsApp <input type="checkbox" id="feature6_whatsapp" name="platform" value="1"></label>
+            <label>Facebook <input type="checkbox" id="feature6_facebook" name="platform" value="1"></label>
+            <label>Instagram <input type="checkbox" id="feature6_instagram" name="platform" value="1"></label>
+            <label>Web Search <input type="checkbox" id="feature6_websearch" name="platform" value="1"></label>
+            <label>Online Purchasing <input type="checkbox" id="feature6_purchasing" name="platform" value="1"></label>
+            <label>YouTube <input type="checkbox" id="feature6_youtube" name="platform" value="1"></label>
+            <label>Twitter <input type="checkbox" id="feature6_twitter" name="platform" value="1"></label>
             <div class="section-divider"></div>
 
             <label>4. How often do you check social media during the following times?</label>
             <table>
-                <tr>
-                    <th></th>
-                    <th>Rarely</th>
-                    <th>Sometimes</th>
-                    <th>Often</th>
-                    <th>Never</th>
+                <tr><th></th><th>Rarely</th><th>Sometimes</th><th>Often</th><th>Never</th></tr>
+                <tr><td>Morning:</td>
+                    <td><input type="radio" name="morning" value="2" id="feature7_rarely"></td>
+                    <td><input type="radio" name="morning" value="3" id="feature7_sometimes"></td>
+                    <td><input type="radio" name="morning" value="1" id="feature7_often"></td>
+                    <td><input type="radio" name="morning" value="0" id="feature7_never"></td>
                 </tr>
-                <tr>
-                    <td>Morning:</td>
-                    <td><input type="radio" name="morning" value="Rarely"></td>
-                    <td><input type="radio" name="morning" value="Sometimes"></td>
-                    <td><input type="radio" name="morning" value="Often"></td>
-                    <td><input type="radio" name="morning" value="Never"></td>
+                <tr><td>Afternoon:</td>
+                    <td><input type="radio" name="afternoon" value="2" id="feature8_rarely"></td>
+                    <td><input type="radio" name="afternoon" value="3" id="feature8_sometimes"></td>
+                    <td><input type="radio" name="afternoon" value="1" id="feature8_often"></td>
+                    <td><input type="radio" name="afternoon" value="0" id="feature8_never"></td>
                 </tr>
-                <tr>
-                    <td>Afternoon:</td>
-                    <td><input type="radio" name="afternoon" value="Rarely"></td>
-                    <td><input type="radio" name="afternoon" value="Sometimes"></td>
-                    <td><input type="radio" name="afternoon" value="Often"></td>
-                    <td><input type="radio" name="afternoon" value="Never"></td>
+                <tr><td>Evening:</td>
+                    <td><input type="radio" name="evening" value="2" id="feature9_rarely"></td>
+                    <td><input type="radio" name="evening" value="3" id="feature9_sometimes"></td>
+                    <td><input type="radio" name="evening" value="1" id="feature9_often"></td>
+                    <td><input type="radio" name="evening" value="0" id="feature9_never"></td>
                 </tr>
-                <tr>
-                    <td>Evening:</td>
-                    <td><input type="radio" name="evening" value="Rarely"></td>
-                    <td><input type="radio" name="evening" value="Sometimes"></td>
-                    <td><input type="radio" name="evening" value="Often"></td>
-                    <td><input type="radio" name="evening" value="Never"></td>
+                <tr><td>Before bed:</td>
+                    <td><input type="radio" name="before_bed" value="2" id="feature10_rarely"></td>
+                    <td><input type="radio" name="before_bed" value="3" id="feature10_sometimes"></td>
+                    <td><input type="radio" name="before_bed" value="1" id="feature10_often"></td>
+                    <td><input type="radio" name="before_bed" value="0" id="feature10_never"></td>
                 </tr>
-                <tr>
-                    <td>Before bed:</td>
-                    <td><input type="radio" name="before_bed" value="Rarely"></td>
-                    <td><input type="radio" name="before_bed" value="Sometimes"></td>
-                    <td><input type="radio" name="before_bed" value="Often"></td>
-                    <td><input type="radio" name="before_bed" value="Never"></td>
-                </tr>
-                <tr>
-                    <td>Just After getting up in the morning:</td>
-                    <td><input type="radio" name="just_after_waking" value="Rarely"></td>
-                    <td><input type="radio" name="just_after_waking" value="Sometimes"></td>
-                    <td><input type="radio" name="just_after_waking" value="Often"></td>
-                    <td><input type="radio" name="just_after_waking" value="Never"></td>
+                <tr><td>Just After waking:</td>
+                    <td><input type="radio" name="just_after_waking" value="2" id="feature11_rarely"></td>
+                    <td><input type="radio" name="just_after_waking" value="3" id="feature11_sometimes"></td>
+                    <td><input type="radio" name="just_after_waking" value="1" id="feature11_often"></td>
+                    <td><input type="radio" name="just_after_waking" value="0" id="feature11_never"></td>
                 </tr>
             </table>
-
             <div class="section-divider"></div>
 
-            <!-- Section 2 -->
+            <!-- Section 2: Attention and Focus -->
             <h3>Section 2: Attention and Focus</h3>
             <label>1. How often do you find it difficult to focus on tasks after using social media?</label>
-            <select name="focus">
-                <option>Never</option>
-                <option>Rarely</option>
-                <option>Sometimes</option>
-                <option>Often</option>
-                <option>Always</option>
+            <select id="feature12" name="focus_difficulty">
+                <option value="1">Never</option>
+                <option value="3">Rarely</option>
+                <option value="4">Sometimes</option>
+                <option value="2">Often</option>
+                <option value="0">Always</option>
             </select>
-            
             <div class="section-divider"></div>
 
             <label>2. Do you feel that social media distracts you from completing important tasks?</label>
-            <select name="focus">
-                <option>Strongly Disagree</option>
-                <option>Disagree</option>
-                <option>Neutral</option>
-                <option>Agree</option>
-                <option>Strongly Agree</option>
+            <select id="feature13" name="distraction">
+                <option value="4">Strongly Disagree</option>
+                <option value="1">Disagree</option>
+                <option value="2">Neutral</option>
+                <option value="0"> Agree</option>
+                <option value="3">Strongly Agree</option>
             </select>
-
             <div class="section-divider"></div>
 
-            <label>3. How often do you switch to social media while doing tasks (e.g., studying or work)?</label>
-            <select name="focus">
-                <option>Never</option>
-                <option>Rarely</option>
-                <option>Sometimes</option>
-                <option>Often</option>
-                <option>Always</option>
-            </select>
-
-            <div class="section-divider"></div>
-
-            <!-- Section 3 -->
+            <!-- Section 3: Sleep Quality -->
             <h3>Section 3: Sleep Quality</h3>
             <label>1. How often do you use social media right before going to bed?</label>
-            <select name="sleep_before">
-                <option>Never</option>
-                <option>Rarely</option>
-                <option>Sometimes</option>
-                <option>Often</option>
-                <option>Always</option>
+            <select id="feature15" name="bed_usage">
+                <option value="1">Never</option>
+                <option value="3">Rarely</option>
+                <option value="4">Sometimes</option>
+                <option value="2">Often</option>
+                <option value="0">Always</option>
             </select>
-            
             <div class="section-divider"></div>
 
             <label>2. Do you feel that your social media usage affects the quality of your sleep?</label>
-            <select name="focus">
-                <option>Strongly Disagree</option>
-                <option>Disagree</option>
-                <option>Neutral</option>
-                <option>Agree</option>
-                <option>Strongly Agree</option>
+            <select id="feature16" name="sleep_quality">
+                <option value="4">Strongly Disagree</option>
+                <option value="1">Disagree</option>
+                <option value="2">Neutral</option>
+                <option value="0"> Agree</option>
+                <option value="3">Strongly Agree</option>
             </select>
-
             <div class="section-divider"></div>
 
             <label>3. On average, how many hours of sleep do you get on a typical night?</label>
-            <select name="sleep_hours">
-                <option>Less than 4 hours</option>
-                <option>4–5 hours</option>
-                <option>6–7 hours</option>
-                <option>8 hours or more</option>
+            <select id="feature17" name="sleep_hours">
+                <option value="3">Less than 4 hours</option>
+                <option value="4.5">4–5 hours</option>
+                <option value="6.5">6–7 hours</option>
+                <option value="9">8 hours or more</option>
             </select>
-            
             <div class="section-divider"></div>
 
-            <!-- Section 4 -->
+            <!-- Section 4: Self-Esteem and Self-Comparison -->
             <h3>Section 4: Self-Esteem and Self-Comparison</h3>
             <label>1. How often do you compare yourself to others based on what you see on social media?</label>
-            <select name="comparison">
-                <option>Never</option>
-                <option>Rarely</option>
-                <option>Sometimes</option>
-                <option>Often</option>
-                <option>Always</option>
+            <select id="feature18" name="comparison">
+                <option value="1">Never</option>
+                <option value="3">Rarely</option>
+                <option value="4">Sometimes</option>
+                <option value="2">Often</option>
+                <option value="0">Always</option>
             </select>
-            
             <div class="section-divider"></div>
 
             <label>2. Do you feel more positive or negative about yourself after using social media?</label>
-            <select name="comparison">
-                <option>Very Positive</option>
-                <option>Positive</option>
-                <option>Neutral</option>
-                <option>Negative</option>
-                <option>Very Negative</option>
+            <select id="feature19" name="self_feeling">
+                <option value="4">Very Positive</option>
+                <option value="2">Positive</option>
+                <option value="1">Neutral</option>
+                <option value="0">Negative</option>
+                <option value="3">Very Negative</option>
             </select>
-            
             <div class="section-divider"></div>
 
             <label>3. Social media makes me feel that others have better lives than I do.</label>
-            <select name="focus">
-                <option>Strongly Disagree</option>
-                <option>Disagree</option>
-                <option>Neutral</option>
-                <option>Agree</option>
-                <option>Strongly Agree</option>
+            <select id="feature20" name="life_comparison">
+                <option value="4">Strongly Disagree</option>
+                <option value="1">Disagree</option>
+                <option value="2">Neutral</option>
+                <option value="0"> Agree</option>
+                <option value="3">Strongly Agree</option>
             </select>
-
             <div class="section-divider"></div>
 
-            <!-- Section 5 -->
+            <!-- Section 5: Time Allocation -->
             <h3>Section 5: Time Allocation</h3>
             <label>1. How often do you feel that you could have spent your time better than being on social media?</label>
-            <select name="time_better">
-                <option>Never</option>
-                <option>Rarely</option>
-                <option>Sometimes</option>
-                <option>Often</option>
-                <option>Always</option>
+            <select id="feature21" name="time_allocation">
+                <option value="1">Never</option>
+                <option value="3">Rarely</option>
+                <option value="4">Sometimes</option>
+                <option value="2">Often</option>
+                <option value="0">Always</option>
             </select>
-            
             <div class="section-divider"></div>
 
             <label>2. When using social media, do you feel like you are missing out on activities or responsibilities?</label>
-            <select name="focus">
-                <option>Strongly Disagree</option>
-                <option>Disagree</option>
-                <option>Neutral</option>
-                <option>Agree</option>
-                <option>Strongly Agree</option>
+            <select id="feature22" name="missing_out">
+                <option value="4">Strongly Disagree</option>
+                <option value="1">Disagree</option>
+                <option value="2">Neutral</option>
+                <option value="0"> Agree</option>
+                <option value="3">Strongly Agree</option>
             </select>
-
             <div class="section-divider"></div>
 
-            <label>3. If you were to reduce your social media use, how would you most likely spend the extra time? (Choose all that apply)</label>
-            <label>Studying or working
-                <input type="checkbox" name="platform" value="WhatsApp">
-            </label>
-            <label>Engaging in hobbies
-                <input type="checkbox" name="platform" value="Facebook">
-            </label>
-            <label>Physical activities/exercise
-                <input type="checkbox" name="platform" value="Instagram">
-            </label>
-            <label>Socializing in person
-                <input type="checkbox" name="platform" value="YouTube">
-            </label>
-            <label>Resting or sleeping
-                <input type="checkbox" name="platform" value="Twitter">
-            </label>
-            <label>Other:
-                <input type="text" name="platform_other" placeholder="Specify here">
-            </label>
-            
+            <label>3. If you were to reduce your social media use, how would you most likely spend the extra time?</label>
+            <label>Studying <input type="checkbox" id="feature23_studying" name="extra_time" value="1"></label>
+            <label>Hobbies <input type="checkbox" id="feature23_hobbies" name="extra_time" value="1"></label>
+            <label>Physical activities <input type="checkbox" id="feature23_physical" name="extra_time" value="1"></label>
+            <label>Socializing <input type="checkbox" id="feature23_socializing" name="extra_time" value="1"></label>
+            <label>Resting <input type="checkbox" id="feature23_resting" name="extra_time" value="1"></label>
             <div class="section-divider"></div>
 
-            <!-- Section 6 -->
+            <!-- Section 6: Real-Life Performance -->
             <h3>Section 6: Real-Life Performance</h3>
-            <label>1. Overall, how would you rate your recent performance in the following areas?</label>
-            
+            <label>1. Do you feel that social media affects your performance in the following areas?</label>
             <table>
-                <tr>
-                    <th></th>
-                    <th>Poor</th>
-                    <th>Fair</th>
-                    <th>Good</th>
-                    <th>Very Good</th>
-                    <th>Excellent</th>
+                <tr><th></th><th>Strongly Disagree</th><th>Disagree</th><th>Neutral</th><th> Agree</th><th>Strongly Agree</th></tr>
+                <tr><td>Academic/Work:</td>
+                    <td><input type="radio" name="academic_effect" value="4" id="feature27_sdisagree"></td>
+                    <td><input type="radio" name="academic_effect" value="1" id="feature27_disagree"></td>
+                    <td><input type="radio" name="academic_effect" value="2" id="feature27_neutral"></td>
+                    <td><input type="radio" name="academic_effect" value="0" id="feature27_agree"></td>
+                    <td><input type="radio" name="academic_effect" value="3" id="feature27_sagree"></td>
                 </tr>
-                <tr>
-                    <td>Academic/Work Performance:</td>
-                    <td><input type="radio" name="academic" value="Poor"></td>
-                    <td><input type="radio" name="academic" value="Fair"></td>
-                    <td><input type="radio" name="academic" value="Good"></td>
-                    <td><input type="radio" name="academic" value="Very Good"></td>
-                    <td><input type="radio" name="academic" value="Excellent"></td>
+                <tr><td>Physical Health:</td>
+                    <td><input type="radio" name="physical_effect" value="4" id="feature28_sdisagree"></td>
+                    <td><input type="radio" name="physical_effect" value="1" id="feature28_disagree"></td>
+                    <td><input type="radio" name="physical_effect" value="2" id="feature28_neutral"></td>
+                    <td><input type="radio" name="physical_effect" value="0" id="feature28_agree"></td>
+                    <td><input type="radio" name="physical_effect" value="3" id="feature28_sagree"></td>
                 </tr>
-                <tr>
-                    <td>Physical Health (e.g., exercise, fitness):</td>
-                    <td><input type="radio" name="health" value="Poor"></td>
-                    <td><input type="radio" name="health" value="Fair"></td>
-                    <td><input type="radio" name="health" value="Good"></td>
-                    <td><input type="radio" name="health" value="Very Good"></td>
-                    <td><input type="radio" name="health" value="Excellent"></td>
-                </tr>
-                <tr>
-                    <td>Social Interactions:</td>
-                    <td><input type="radio" name="social" value="Poor"></td>
-                    <td><input type="radio" name="social" value="Fair"></td>
-                    <td><input type="radio" name="social" value="Good"></td>
-                    <td><input type="radio" name="social" value="Very Good"></td>
-                    <td><input type="radio" name="social" value="Excellent"></td>
+                <tr><td>Social Interactions:</td>
+                    <td><input type="radio" name="social_effect" value="4" id="feature29_sdisagree"></td>
+                    <td><input type="radio" name="social_effect" value="1" id="feature29_disagree"></td>
+                    <td><input type="radio" name="social_effect" value="2" id="feature29_neutral"></td>
+                    <td><input type="radio" name="social_effect" value="0" id="feature29_agree"></td>
+                    <td><input type="radio" name="social_effect" value="3" id="feature29_sagree"></td>
                 </tr>
             </table>
-            
             <div class="section-divider"></div>
 
-            <label>2. Do you feel that social media affects your performance in the following areas?</label>
-
-<table>
-    <tr>
-        <th></th>
-        <th>Strongly Disagree</th>
-        <th>Disagree</th>
-        <th>Neutral</th>
-        <th>Agree</th>
-        <th>Strongly Agree</th>
-    </tr>
-    <tr>
-        <td>Academic/Work Performance:</td>
-        <td><input type="radio" name="academic_performance" value="Strongly Disagree"></td>
-        <td><input type="radio" name="academic_performance" value="Disagree"></td>
-        <td><input type="radio" name="academic_performance" value="Neutral"></td>
-        <td><input type="radio" name="academic_performance" value="Agree"></td>
-        <td><input type="radio" name="academic_performance" value="Strongly Agree"></td>
-    </tr>
-    <tr>
-        <td>Physical Health:</td>
-        <td><input type="radio" name="physical_health" value="Strongly Disagree"></td>
-        <td><input type="radio" name="physical_health" value="Disagree"></td>
-        <td><input type="radio" name="physical_health" value="Neutral"></td>
-        <td><input type="radio" name="physical_health" value="Agree"></td>
-        <td><input type="radio" name="physical_health" value="Strongly Agree"></td>
-    </tr>
-    <tr>
-        <td>Social Interactions:</td>
-        <td><input type="radio" name="social_interactions" value="Strongly Disagree"></td>
-        <td><input type="radio" name="social_interactions" value="Disagree"></td>
-        <td><input type="radio" name="social_interactions" value="Neutral"></td>
-        <td><input type="radio" name="social_interactions" value="Agree"></td>
-        <td><input type="radio" name="social_interactions" value="Strongly Agree"></td>
-    </tr>
-</table>
-
-
-            <div class="section-divider"></div>
-
-            <!-- Section 7 -->
-
-            <h3>Section 7: Physical Health and Activity Untitled Title</h3>
-            <label>1. How often do you engage in physical activities (e.g., sports, exercise, walking)?</label>
-            <select name="performance">
-                <option>Rarely or never</option>
-                <option>1-2 times per week</option>
-                <option>3-4 times per week</option>
-                <option>5 or more times per week</option>
+            <!-- Section 7: Physical Health and Activity -->
+            <h3>Section 7: Physical Health and Activity</h3>
+            <label>1. How often do you engage in physical activities?</label>
+            <select id="feature30" name="physical_activity">
+                <option value="0">Rarely or never</option>
+                <option value="2">1-2 times per week</option>
+                <option value="4">3-4 times per week</option>
+                <option value="6">5 or more times per week</option>
             </select>
-            
             <div class="section-divider"></div>
 
             <label>2. How much time do you spend on physical activities on a typical day?</label>
-            <select name="performance">
-                <option>Less than 15 minutesr</option>
-                <option>15-30 minutes</option>
-                <option>30-60 minutes</option>
-                <option>More than 1 hour</option>
+            <select id="feature31" name="physical_time">
+                <option value="15">Less than 15 minutes</option>
+                <option value="30">15-30 minutes</option>
+                <option value="60">30-60 minutes</option>
+                <option value="90">More than 1 hour</option>
             </select>
-            
             <div class="section-divider"></div>
 
             <label>3. Do you feel that social media usage reduces the amount of time you spend on physical activities?</label>
-            <select name="focus">
-                <option>Strongly Disagree</option>
-                <option>Disagree</option>
-                <option>Neutral</option>
-                <option>Agree</option>
-                <option>Strongly Agree</option>
+            <select id="feature32" name="physical_reduction">
+                <option value="4">Strongly Disagree</option>
+                <option value="1">Disagree</option>
+                <option value="2">Neutral</option>
+                <option value="0"> Agree</option>
+                <option value="3">Strongly Agree</option>
             </select>
-
             <div class="section-divider"></div>
 
-            <label>4. How often do you choose to stay on social media instead of being physically active (e.g., exercise, outdoor activities)?</label>
-            <select name="focus">
-                <option>Never</option>
-                <option>Rarely</option>
-                <option>Sometimes</option>
-                <option>Often</option>
-                <option>Always</option>
-            </select>
-
-            <div class="section-divider"></div>
-
-            <label>5. How would you rate your overall physical health?</label>
-            <select name="performance">
-                <option>Excellent</option>
-                <option>Good</option>
-                <option>Fair</option>                
-                <option>Poor</option>
-                
-            </select>
-            
-            <div class="section-divider"></div>
-
-            <label>6. Have you experienced any of the following due to prolonged social media use? (Select all that apply) </label>
-            <label>Neck or back pain
-                <input type="checkbox" name="platform" value="WhatsApp">
-            </label>
-            <label>Eye strain or headaches
-                <input type="checkbox" name="platform" value="Facebook">
-            </label>
-            <label>Poor posture
-                <input type="checkbox" name="platform" value="Instagram">
-            </label>
-            <label>None of the above
-                <input type="checkbox" name="platform" value="YouTube">
-            </label>
-                   
-            <div class="section-divider"></div>
-
-            <label>7. On a typical day, how often do you take breaks from social media to stretch or move around?</label>
-            <select name="performance">
-                <option>Every 15 minutes</option>
-                <option>Every 30 minutes</option>
-                <option>Every hour</option>
-                <option>Rarely</option>
-                <option>Never</option>
-            </select>
-
-            
-
-            <!-- if submit button is pressed it will take you back to onboarding page -->
+            <!-- Buttons -->
             <div class="button-container">
-                <button type="button" onclick="window.location.href='/Onboarding/onboarding.html'">Submit
-                </button>
-              </div>
-              
-            
+                <button type="submit">Predict</button>
+                <button type="reset">Clear Form</button>
+            </div>
         </form>
+
+        <!-- Prediction Results -->
+        <h3>Prediction Results:</h3>
+        <p>Physical Health: <span id="result_physical_health"></span></p>
+        <p>Social Interactions: <span id="result_social_interactions"></span></p>
+        <p>Sleep Quality: <span id="result_sleep_quality"></span></p>
+        <p>Academic/Work Performance: <span id="result_academic_performance"></span></p>
     </div>
+
+    <script>
+        document.getElementById("predictForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Collect the 28 features from the previous form
+            let feature1 = parseFloat(document.getElementById("feature1").value) || 0; // Age
+            let feature2 = parseFloat(document.querySelector("input[name='gender']:checked")?.value) || 0; // Gender
+            let feature3 = parseFloat(document.getElementById("feature3").value) || 0; // Education
+            let feature4 = parseFloat(document.getElementById("feature4").value) || 0; // Hours per day
+            let feature5 = [
+                document.getElementById("feature5_news").checked ? 1 : 0,
+                document.getElementById("feature5_entertainment").checked ? 1 : 0,
+                document.getElementById("feature5_lifestyle").checked ? 1 : 0,
+                document.getElementById("feature5_educational").checked ? 1 : 0,
+                document.getElementById("feature5_social").checked ? 1 : 0,
+                document.getElementById("feature5_spirituality").checked ? 1 : 0
+            ].reduce((a, b) => a + b, 0); // Content types
+            let feature6 = [
+                document.getElementById("feature6_whatsapp").checked ? 1 : 0,
+                document.getElementById("feature6_facebook").checked ? 1 : 0,
+                document.getElementById("feature6_instagram").checked ? 1 : 0,
+                document.getElementById("feature6_websearch").checked ? 1 : 0,
+                document.getElementById("feature6_purchasing").checked ? 1 : 0,
+                document.getElementById("feature6_youtube").checked ? 1 : 0,
+                document.getElementById("feature6_twitter").checked ? 1 : 0
+            ].reduce((a, b) => a + b, 0); // Platforms
+            let feature7 = parseFloat(document.querySelector("input[name='morning']:checked")?.value) || 0;
+            let feature8 = parseFloat(document.querySelector("input[name='afternoon']:checked")?.value) || 0;
+            let feature9 = parseFloat(document.querySelector("input[name='evening']:checked")?.value) || 0;
+            let feature10 = parseFloat(document.querySelector("input[name='before_bed']:checked")?.value) || 0;
+            let feature11 = parseFloat(document.querySelector("input[name='just_after_waking']:checked")?.value) || 0;
+            let feature12 = parseFloat(document.getElementById("feature12").value) || 0; // Focus difficulty
+            let feature13 = parseFloat(document.getElementById("feature13").value) || 0; // Distraction
+            let feature15 = parseFloat(document.getElementById("feature15").value) || 0; // Before bed usage
+            let feature16 = parseFloat(document.getElementById("feature16").value) || 0; // Sleep quality affect
+            let feature17 = parseFloat(document.getElementById("feature17").value) || 0; // Sleep hours
+            let feature18 = parseFloat(document.getElementById("feature18").value) || 0; // Comparison
+            let feature19 = parseFloat(document.getElementById("feature19").value) || 0; // Self-feeling
+            let feature20 = parseFloat(document.getElementById("feature20").value) || 0; // Life comparison
+            let feature21 = parseFloat(document.getElementById("feature21").value) || 0; // Time allocation
+            let feature22 = parseFloat(document.getElementById("feature22").value) || 0; // Missing out
+            let feature23 = [
+                document.getElementById("feature23_studying").checked ? 1 : 0,
+                document.getElementById("feature23_hobbies").checked ? 1 : 0,
+                document.getElementById("feature23_physical").checked ? 1 : 0,
+                document.getElementById("feature23_socializing").checked ? 1 : 0,
+                document.getElementById("feature23_resting").checked ? 1 : 0
+            ].reduce((a, b) => a + b, 0); // Extra time
+            let feature27 = parseFloat(document.querySelector("input[name='academic_effect']:checked")?.value) || 0;
+            let feature28 = parseFloat(document.querySelector("input[name='physical_effect']:checked")?.value) || 0;
+            let feature29 = parseFloat(document.querySelector("input[name='social_effect']:checked")?.value) || 0;
+            let feature30 = parseFloat(document.getElementById("feature30").value) || 0; // Physical activity
+            let feature31 = parseFloat(document.getElementById("feature31").value) || 0; // Physical time
+            let feature32 = parseFloat(document.getElementById("feature32").value) || 0; // Physical reduction
+
+            // Feature array with 28 elements
+            let features = [
+                feature1, feature2, feature3, feature4, feature5, feature6, feature7, feature8,
+                feature9, feature10, feature11, feature12, feature13, feature15, feature16,
+                feature17, feature18, feature19, feature20, feature21, feature22, feature23,
+                feature27, feature28, feature29, feature30, feature31, feature32
+            ];
+
+            // Define all four API endpoints
+            const apiEndpoints = {
+                "physical_health": "https://mindtunes.onrender.com/predict/physical_health",
+                "social_interactions": "https://mindtunes.onrender.com/predict/social_interactions",
+                "sleep_quality": "https://mindtunes.onrender.com/predict/sleep_quality",
+                "academic_performance": "https://mindtunes.onrender.com/predict/academic_performance"
+            };
+
+            // Function to make API call
+            const makePrediction = (url, modelKey) => {
+                fetch(url, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ features: features })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.text().then(text => { throw new Error(text) });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(`${modelKey} Prediction:`, data);
+                    document.getElementById(`result_${modelKey}`).innerText = JSON.stringify(data);
+                })
+                .catch(error => {
+                    console.error(`${modelKey} Error:`, error);
+                    document.getElementById(`result_${modelKey}`).innerText = "Error: " + error.message;
+                });
+            };
+
+            // Call all four APIs
+            Object.entries(apiEndpoints).forEach(([modelKey, url]) => {
+                makePrediction(url, modelKey);
+            });
+        });
+    </script>
 </body>
 </html>
