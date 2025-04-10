@@ -7,12 +7,6 @@
     <link rel="stylesheet" href="form.css">
 </head>
 <body>
-    <div class="video-background">
-        <video autoplay muted loop>
-            <source src="vid\form.mp4" type="video/mp4">
-        </video>
-        <div class="video-overlay"></div>
-    </div>
     <div class="container">
         <h1 class="main-heading">Content Consumption on Social Media and Real-Life Performance</h1>
         <h3 class="sub-heading">Questionnaire</h3>
@@ -25,9 +19,20 @@
             <div class="section-divider"></div>
 
             <label>2. Gender *</label>
-            <label>Male <input type="radio" name="gender" value="1" id="feature2_male" required></label>
-            <label>Female <input type="radio" name="gender" value="0" id="feature2_female"></label>
-            <label>Other <input type="radio" name="gender" value="2" id="feature2_other"></label>
+            <table>
+                <tr>
+                    <td>Male</td>
+                    <td><input type="radio" name="gender" value="1" id="feature2_male" required></td>
+                </tr>
+                <tr>
+                    <td>Female</td>
+                    <td><input type="radio" name="gender" value="0" id="feature2_female"></td>
+                </tr>
+                <tr>
+                    <td>Other</td>
+                    <td><input type="radio" name="gender" value="2" id="feature2_other"></td>
+                </tr>
+            </table>
             <div class="section-divider"></div>
 
             <label>3. Education Level *</label>
@@ -287,14 +292,30 @@
                 <button type="submit">Predict</button>
                 <button type="reset">Clear Form</button>
             </div>
+            <!-- Prediction Section - Separated and Styled -->
+<div class="prediction-card">
+    <h3>Prediction Results</h3>
+    <div class="prediction-grid">
+        <div class="prediction-item">
+            <h4>Physical Health</h4>
+            <p id="result_physical_health">--</p>
+        </div>
+        <div class="prediction-item">
+            <h4>Social Interactions</h4>
+            <p id="result_social_interactions">--</p>
+        </div>
+        <div class="prediction-item">
+            <h4>Sleep Quality</h4>
+            <p id="result_sleep_quality">--</p>
+        </div>
+        <div class="prediction-item">
+            <h4>Academic Performance</h4>
+            <p id="result_academic_performance">--</p>
+        </div>
+    </div>
+</div>
         </form>
-
-        <!-- Prediction Results -->
-        <h3>Prediction Results:</h3>
-        <p>Physical Health: <span id="result_physical_health"></span></p>
-        <p>Social Interactions: <span id="result_social_interactions"></span></p>
-        <p>Sleep Quality: <span id="result_sleep_quality"></span></p>
-        <p>Academic/Work Performance: <span id="result_academic_performance"></span></p>
+    
     </div>
 
     <script>
@@ -383,13 +404,22 @@
                 })
                 .then(data => {
                     console.log(`${modelKey} Prediction:`, data);
-                    document.getElementById(`result_${modelKey}`).innerText = JSON.stringify(data);
+                    document.getElementById(`result_${modelKey}`).innerText = JSON.stringify(impactMessages[data.prediction[0]]);
                 })
                 .catch(error => {
                     console.error(`${modelKey} Error:`, error);
                     document.getElementById(`result_${modelKey}`).innerText = "Error: " + error.message;
                 });
             };
+
+            // Mapping of predicted values to messages
+const impactMessages = {
+  0: "⚠ Moderate Impact: Social media is affecting you a bit. Consider reducing screen time gradually.",
+  1: "✅ Good: Social media isn’t affecting your life significantly. Keep up the balance!",
+  2: "🌟 No Impact: Great! You're using social media wisely and staying focused.",
+  3: "❗ Strong Impact: You should consider taking regular breaks from long social media sessions.",
+  4: "💪 Excellent: You’re completely distraction-free. Keep it up and inspire others too!"
+};
 
             // Call all four APIs
             Object.entries(apiEndpoints).forEach(([modelKey, url]) => {
