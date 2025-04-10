@@ -610,3 +610,51 @@ input, select, textarea {
 input:hover, select:hover, textarea:hover {
   border-color: rgba(139, 195, 74, 0.5);
 }
+
+.prediction-card {
+  margin-top: 50px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--accent-color);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(139, 195, 74, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  animation: fadeInUp 1s ease-out;
+  text-align: center;
+}
+
+.prediction-card h3 {
+  font-size: 2rem;
+  margin-bottom: 25px;
+  color: var(--light-text);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.prediction-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.prediction-item {
+  background: var(--input-bg);
+  padding: 20px;
+  border-radius: 12px;
+  color: var(--dark-bg);
+  font-weight: 600;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.prediction-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.prediction-item h4 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+}
